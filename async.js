@@ -19,21 +19,14 @@ const getColdrinks= new Promise((resolve, reject) => {
     resolve('coldrinks')
 })
 
-   let ticket= await promiseTicket;
-   console.log(`husband: we shold go in you ${ticket}` );
-   console.log('wife: no i am hungry');
-   let popcorn= await getPopcorn;
 
-console.log(`husband:i got popcorn ${popcorn} `);
-console.log('husband: should  we go in');
-console.log('wife: i need butter in my popcorn');
+let ticket= await promiseTicket;
 
-let butter = await addbutter;
-console.log(`i got some ${butter} on popcorn`);
-console.log('wife: lets go');
-   
-let coldrink = await getColdrinks;
-console.log(`husnand: here's the ${coldrink} `);
+
+let[popcorn,butter,coke]  = await Promise.all([getPopcorn,addbutter,getColdrinks])
+
+console.log(popcorn,butter,coke);
+
 
 return ticket;
 
